@@ -4,7 +4,7 @@
 
 20210401:
 
-* 信任https,简单支持c2profile,添加异常容错处理.
+* 信任https,简单支持c2profile,添加异常容错处理,解决cmd小黑窗.
 
 
 ## use
