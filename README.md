@@ -7,6 +7,12 @@
 * 信任https,简单支持c2profile,添加异常容错处理.
 
 
+## use
+
+```
+export GOOS="darwin" && export GOARCH="amd64" && rm -rf ./main &&go build cmd/main.go &&./main
+```
+
 **Implement CobaltStrike's Beacon in Go**
 
 ----
