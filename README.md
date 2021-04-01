@@ -1,5 +1,12 @@
 # Geacon
 
+## log
+
+20210401:
+
+* 信任https,简单支持c2profile,添加异常容错处理.
+
+
 **Implement CobaltStrike's Beacon in Go**
 
 ----
