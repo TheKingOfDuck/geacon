@@ -1,17 +1,41 @@
 # Geacon
 
+
+
 ## log
+
+
+20210402:
+
+* 优化代码，统一配置至config.go
+
 
 20210401:
 
-* 信任https,简单支持c2profile,添加异常容错处理,解决cmd小黑窗.
+* 信任https,简单支持c2profile,添加异常容错处理,解决cmd小黑窗,支持CDN上线
 
 
 ## use
 
+
+### macos
 ```
-export GOOS="darwin" && export GOARCH="amd64" && rm -rf ./main &&go build cmd/main.go &&./main
+export GOOS="darwin" && export GOARCH="amd64" && rm -rf ./main &&go build -ldflags="-s -w" cmd/main.go &&./main
 ```
+### linux
+```
+export GOOS="linux" && export GOARCH="amd64" && rm -rf ./main &&go build -ldflags="-s -w" cmd/main.go &&./main
+```
+### windows
+
+WINDOWS环境需要**去除`/src/geacon/cmd/packet/commands.go`中第13和64行的注释，否则执行命令会有小黑窗**！！！
+
+```
+export GOOS="windows" && export GOARCH="amd64"&&go build -ldflags="-s -w -H windowsgui" cmd/main.go
+```
+
+
+
 
 **Implement CobaltStrike's Beacon in Go**
 

@@ -10,7 +10,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"runtime"
-	"syscall"
+	// "syscall"
 	"strings"
 )
 
@@ -61,7 +61,7 @@ func Shell(path string, args []byte) []byte {
 		args = bytes.Trim(args, " ")
 		argsArray := strings.Split(string(args), " ")
 		cmd_instance := exec.Command(path, argsArray...)
-		cmd_instance.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
+		// cmd_instance.SysProcAttr = &syscall.SysProcAttr{HideWindow: true}
 		cmd_output, err := cmd_instance.CombinedOutput()
 		// fmt.Println(cmd_output)
 		if err != nil {

@@ -31,12 +31,12 @@ func cs(){
 				totalLen := resp.Response().ContentLength
 				if totalLen > 0 {
 					hmacHash := resp.Bytes()[totalLen-crypt.HmacHashLen:]
-					fmt.Println("hmac hash1: %v\n", hmacHash)
+					fmt.Printf("hmac hash1: %v\n", hmacHash)
 					//TODO check the hmachash
 					restBytes := resp.Bytes()[:totalLen-crypt.HmacHashLen]
 					decrypted := packet.DecryptPacket(restBytes)
 					timestamp := decrypted[:4]
-					fmt.Println("timestamp: %v\n", timestamp)
+					fmt.Printf("timestamp: %v\n", timestamp)
 					lenBytes := decrypted[4:8]
 					packetLen := packet.ReadInt(lenBytes)
 
